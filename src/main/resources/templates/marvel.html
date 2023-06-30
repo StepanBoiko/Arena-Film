@@ -1,0 +1,393 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>Films Collections</title>
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+  <style>
+
+    @import url('https://fonts.googleapis.com/css2?family=Itim&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Fascinate&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Itim&family=Reggae+One&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Jura:wght@700&family=Reggae+One&display=swap');
+
+    .header{
+      background: linear-gradient(45deg, coral, chartreuse);
+    }
+
+    .popcorn{
+      display: flex;
+      margin-left: 30px;
+    }
+
+    .home{
+      display: flex;
+      margin-left: 170px;
+    }
+
+    .container-fluid .navbar-brand{
+      font-family: 'Fascinate', cursive;
+      margin-left: 20px;
+      font-size: 35px;
+      color: greenyellow;
+      font-weight: bold;
+
+    }
+
+    .container-fluid .navbar-brand:hover{
+      color: cornflowerblue;
+    }
+
+    #genre{
+      color: #dc3545;
+      font-weight: bold;
+    }
+    #coutry{
+      color: #dc3545;
+      font-weight: bold;
+    }
+
+    #menu1{
+      font-family: 'Jura', sans-serif;
+      background: linear-gradient(45deg, coral, mediumpurple);
+    }
+
+    .dropdown-menu{
+      font-family: 'Jura', sans-serif;
+      background: linear-gradient(45deg, yellowgreen, lightskyblue);
+    }
+    #about{
+      font-family: 'Jura', sans-serif;
+      border-color: coral;
+      color: coral;
+      font-weight: bold;
+    }
+
+    #about_visitor{
+      font-family: 'Jura', sans-serif;
+      border-color: coral;
+      color: coral;
+      font-weight: bold;
+      margin-right: 5px;
+    }
+
+    #about_visitor:hover{
+      color: white;
+      background-color: coral;
+    }
+
+    #about:hover{
+      color: white;
+      background-color: coral;
+    }
+
+    .dropdown-item:hover{
+      background-color: aquamarine;
+    }
+
+    .container-fluid .nav-link{
+      font-size: 20px;
+      font-family: 'Jura', sans-serif;
+    }
+
+    #nav1{
+      color: #dc3545;
+    }
+
+    #nav0{
+      color: #dc3545;
+    }
+
+    #navbarDropdown{
+      color: #dc3545;
+    }
+
+    #navbarDropdown2{
+      color: #dc3545;
+    }
+  </style>
+
+
+
+  <style>
+    @import url('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
+
+    #footer {
+      background: linear-gradient(45deg, yellowgreen, red) !important;
+    }
+
+    #footer a {
+      color: #ffffff;
+      text-decoration: none !important;
+      background-color: transparent;
+      -webkit-text-decoration-skip: objects;
+    }
+    #footer ul.social li{
+      padding: 3px 0;
+    }
+    #footer ul.social li a i {
+      margin-right: 5px;
+      font-size:25px;
+      -webkit-transition: .5s all ease;
+      -moz-transition: .5s all ease;
+      transition: .5s all ease;
+    }
+    #footer ul.social li:hover a i {
+      font-size:30px;
+      margin-top:-10px;
+    }
+
+  </style>
+
+  <style>
+    .mainpage{
+      background: linear-gradient(45deg, lightskyblue, lightgoldenrodyellow);
+    }
+
+    .content{
+      width: 90%;
+      margin: auto;
+    }
+
+    .marvhead p{
+      font-family: 'Jura', sans-serif;
+      font-size: 30px;
+      color: #dc3545;
+    }
+
+
+    .marvel1{
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      margin-top: 10px;
+      text-align: center;
+    }
+
+    .marvel2{
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      margin-top: 50px;
+      text-align: center;
+    }
+
+    .marvel1 p{
+      font-family: 'Jura', sans-serif;
+      color: rebeccapurple;
+      font-size: 17px;
+    }
+
+    .marvel2 p{
+      font-family: 'Jura', sans-serif;
+      color: rebeccapurple;
+      font-size: 17px;
+    }
+
+    .music{
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .soundmarvel{
+      margin-top: 30px;
+      margin-bottom: 50px;
+    }
+    .soundmarvel p{
+      color: #dc3545;
+      font-size: 30px;
+      font-family: 'Jura', sans-serif;
+    }
+  </style>
+
+</head>
+  <body>
+
+  <div class="mainpage">
+    <div class="header">
+      <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container-fluid">
+          <div class="popcorn">
+            <img th:src="@{https://cdn-icons-png.flaticon.com/512/2665/2665795.png}" th:href="@{/home}" height="64px" width="64px">
+          </div>
+          <a class="navbar-brand" th:href="@{/home}">Arena Film</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                  data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                  aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active home"  id="nav0" aria-current="page" th:href="@{/home}">ГОЛОВНА</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" id="nav1" th:href="@{/serials}">СЕРІАЛИ</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle " href="#" id="navbarDropdown" role="button"
+                   data-bs-toggle="dropdown" aria-expanded="false">
+                  ФІЛЬМИ
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li><a class="dropdown-item" id="genre" href="#">За жанром</a></li>
+                  <li>
+                    <hr class="dropdown-divider">
+                  </li>
+                  <li><a class="dropdown-item" href="#">Комедії</a></li>
+                  <li><a class="dropdown-item" href="#">Трилери</a></li>
+                  <li><a class="dropdown-item" href="#">Фентезі</a></li>
+                  <li>
+                    <hr class="dropdown-divider">
+                  </li>
+                  <li><a class="dropdown-item" id="coutry" href="#">За країною</a></li>
+                  <li>
+                    <hr class="dropdown-divider">
+                  </li>
+                  <li><a class="dropdown-item" href="#">Українські</a></li>
+                  <li><a class="dropdown-item" href="#">Американські</a></li>
+                  <li><a class="dropdown-item" href="#">Російські</a></li>
+                </ul>
+              </li>
+
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle " href="#" id="navbarDropdown2" role="button"
+                   data-bs-toggle="dropdown" aria-expanded="false">
+                  ЗБІРКИ ФІЛЬМІВ
+                </a>
+                <ul class="dropdown-menu" id="menu1" aria-labelledby="navbarDropdown">
+                  <li><a class="dropdown-item" id="mag" href="#">Про магію</a></li>
+                  <li>
+                    <hr class="dropdown-divider">
+                  </li>
+                  <li><a class="dropdown-item" id="space" href="#">Про космос</a></li>
+                  <li>
+                    <hr class="dropdown-divider">
+                  </li>
+                  <li><a class="dropdown-item" id="future" href="#">Про майбутнє</a></li>
+                  <li>
+                    <hr class="dropdown-divider">
+                  </li>
+                  <li><a class="dropdown-item" id="marvel" th:href="@{/marvel}">Marvel</a></li>
+                </ul>
+              </li>
+            </ul>
+            <form class="d-flex">
+              <a class="btn btn-outline-success" id="about_visitor" th:href="@{/visitor}" role="button">Підбірка</a>
+            </form>
+            <form class="d-flex">
+              <a class="btn btn-outline-success" id="about" th:href="@{/}" role="button">Про автора</a>
+            </form>
+          </div>
+        </div>
+      </nav>
+    </div>
+
+    <div class="content">
+
+      <div class="marvhead">
+        <hr>
+        <p>КІНОВСЕСВІТ MARVEL</p>
+        <hr>
+      </div>
+
+      <div class="marvel1">
+        <div>
+          <img th:src="@{https://s6.vcdn.biz/static/f/1243921911/image.jpg/pt/r300x423x4}" width="320" height="450">
+          <p>Чорна Пантера</p>
+          <p>(2018) Бойовики</p>
+        </div>
+
+        <div>
+          <img th:src="@{http://posters.hurtom.com/albums/movies/2jvw4.jpg}" width="320" height="450">
+          <p>Месники: Війна нескінченності</p>
+          <p>(2018) Бойовики</p>
+        </div>
+
+        <div>
+          <img th:src="@{https://eneyida.tv/uploads/posts/2019-10/1571136095_1.jpg}" width="320" height="450">
+          <p>Людина-мураха та Оса</p>
+          <p>(2018) Бойовики</p>
+        </div>
+
+        <div>
+          <img th:src="@{https://kino-teatr.ua/public/main/films/poster_593f66dda1f41.jpg}" width="320" height="450">
+          <p>Людина-павук: Повернення додому</p>
+          <p>(2017) Бойовики</p>
+        </div>
+      </div>
+
+      <div class="marvel2">
+        <div>
+          <img th:src="@{https://s9.vcdn.biz/static/f/861989391/image.jpg/pt/r300x423x4}" width="320" height="450">
+          <p>Перший месник: Протистояння</p>
+          <p>(2016) Бойовики</p>
+        </div>
+
+        <div>
+          <img th:src="@{http://funserials.moy.su/_ld/1/11825443.jpg}" width="320" height="450">
+          <p>Тор: Рагнарок</p>
+          <p>(2017) Комедії</p>
+        </div>
+
+        <div>
+          <img th:src="@{https://thumbs.dfs.ivi.ru/storage38/contents/3/1/d519413124a8c319bbf7abb4840835.jpg}" width="320" height="450">
+          <p>Доктор Стрендж</p>
+          <p>(2016) Пригоди</p>
+        </div>
+
+        <div>
+          <img th:src="@{https://afisha.lutsk.ua/sites/image.life/company172/events-13145-99999-5346-kb.jpg}" width="320" height="450">
+          <p>Вартові Галактики. Частина 2</p>
+          <p>(2017) Бойовики</p>
+        </div>
+      </div>
+
+      <div class="soundmarvel">
+        <hr>
+        <p>MARVEL MUSIC</p>
+        <hr>
+        <div class="music">
+          <iframe src="https://open.spotify.com/embed/playlist/37i9dQZF1DX5pOp62IUR81" width="600" height="450" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+          <iframe allow="autoplay *; encrypted-media *; fullscreen *" frameborder="0" height="450" style="width:100%;max-width:600px;overflow:hidden;background:transparent;" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation" src="https://embed.music.apple.com/ua/playlist/marvel-studios-music/pl.7fdd6e74d2324a43bae830645f268538?l=uk"></iframe>
+        </div>
+      </div>
+
+
+    </div>
+
+    <div class="footer">
+      <section id="footer">
+        <div class="container">
+          <div class="row">
+            <div class="mt-2">
+              <ul class="list-unstyled list-inline social text-center">
+                <li class="list-inline-item"><a href=""><i class="fa fa-facebook"></i></a></li>
+                <li class="list-inline-item"><a href=""><i class="fa fa-twitter"></i></a></li>
+                <li class="list-inline-item"><a href=""><i class="fa fa-instagram"></i></a></li>
+                <li class="list-inline-item"><a href=""><i class="fa fa-google-plus"></i></a></li>
+                <li class="list-inline-item"><a href=""><i class="fa fa-envelope"></i></a></li>
+              </ul>
+            </div>
+            <hr>
+          </div>
+          <div class="row">
+            <div class="text-center text-white">
+              <p>Степан Бойко КН-211</p>
+              <p class="h6"></p>
+            </div>
+            <hr>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+  </body>
+</html>

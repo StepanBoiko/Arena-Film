@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Serials</title>
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <link rel="icon" href="templates/images/clapperboard.png" type="image/icon type"/>
+
+  <style>
+
+    @import url('https://fonts.googleapis.com/css2?family=Itim&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Fascinate&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Itim&family=Reggae+One&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Jura:wght@700&family=Reggae+One&display=swap');
+
+    .header{
+      background: linear-gradient(45deg, coral, chartreuse);
+    }
+
+    .popcorn{
+      display: flex;
+      margin-left: 30px;
+    }
+
+    .home{
+      display: flex;
+      margin-left: 170px;
+    }
+
+    .container-fluid .navbar-brand{
+      font-family: 'Fascinate', cursive;
+      margin-left: 20px;
+      font-size: 35px;
+      color: greenyellow;
+      font-weight: bold;
+
+    }
+
+    .container-fluid .navbar-brand:hover{
+      color: cornflowerblue;
+    }
+
+    #genre{
+      color: #dc3545;
+      font-weight: bold;
+    }
+    #coutry{
+      color: #dc3545;
+      font-weight: bold;
+    }
+
+    #menu1{
+      font-family: 'Jura', sans-serif;
+      background: linear-gradient(45deg, coral, mediumpurple);
+    }
+
+    .dropdown-menu{
+      font-family: 'Jura', sans-serif;
+      background: linear-gradient(45deg, yellowgreen, lightskyblue);
+    }
+    #about{
+      font-family: 'Jura', sans-serif;
+      border-color: coral;
+      color: coral;
+      font-weight: bold;
+    }
+
+    #about_visitor{
+      font-family: 'Jura', sans-serif;
+      border-color: coral;
+      color: coral;
+      font-weight: bold;
+      margin-right: 5px;
+    }
+
+    #about_visitor:hover{
+      color: white;
+      background-color: coral;
+    }
+
+
+    #about:hover{
+      color: white;
+      background-color: coral;
+    }
+
+    .dropdown-item:hover{
+      background-color: aquamarine;
+    }
+
+    .container-fluid .nav-link{
+      font-size: 20px;
+      font-family: 'Jura', sans-serif;
+    }
+
+    #nav1{
+      color: #dc3545;
+    }
+
+    #nav0{
+      color: #dc3545;
+    }
+
+    #navbarDropdown{
+      color: #dc3545;
+    }
+
+    #navbarDropdown2{
+      color: #dc3545;
+    }
+
+  </style>
+
+  <style>
+
+    @import url('https://fonts.googleapis.com/css2?family=Fascinate&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Reggae+One&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Itim&family=Reggae+One&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Jura:wght@700&family=Reggae+One&display=swap');
+
+
+    .mainpage{
+      background: linear-gradient(45deg, lightskyblue, lightgoldenrodyellow);
+    }
+
+    .chernobyl{
+      background: url("https://wallpaperaccess.com/full/1307295.png") no-repeat;
+      background-size: 100%;
+      height: 700px;
+    }
+
+    #chernobyl_head{
+      margin-left: 3%;
+      top: 30%;
+      right: 30%;
+      text-transform: uppercase;
+      font-family: verdana;
+      font-size: 4em;
+      font-weight: 700;
+      color: goldenrod;
+      text-shadow: 1px 1px 1px #919191,
+      1px 2px 1px #919191,
+      1px 3px 1px #919191,
+      1px 4px 1px #919191,
+      1px 5px 1px #919191,
+      1px 6px 1px #919191,
+      1px 7px 1px #919191,
+      1px 8px 1px #919191,
+      1px 9px 1px #919191,
+      1px 10px 1px #919191,
+      1px 18px 6px rgba(16,16,16,0.4),
+      1px 22px 10px rgba(16,16,16,0.2),
+      1px 25px 35px rgba(16,16,16,0.2),
+      1px 30px 60px rgba(16,16,16,0.4);
+    }
+
+    #hbo{
+      position: absolute;
+      font-family: 'Jura', sans-serif;
+      text-shadow: 3px 3px 3px lightgray;
+      color: #216d4f;
+      font-size: 30px;
+      margin-top: 36%;
+      margin-left: 2%;
+    }
+
+    .images_chernobyl{
+      position: relative;
+      z-index: 1;
+    }
+
+    .images_chernobyl img{
+      width: 30.5%;
+      height: 280px;
+    }
+
+    #chern1{
+      position: absolute;
+      margin-left: 2%;
+      margin-top: 1.5%;
+      border-radius: 30px 30px 30px 30px;
+      box-shadow: 10px 20px 40px 0px black;
+    }
+
+    #chern2{
+      position: absolute;
+      margin-left: 24%;
+      margin-top: 15%;
+      border-radius: 30px 30px 30px 30px;
+      box-shadow: 10px 20px 40px 0px black;
+    }
+
+
+    #chern3{
+      position: absolute;
+      margin-left: 49%;
+      margin-top: -2%;
+      border-radius: 30px 30px 30px 30px;
+      box-shadow: 10px 20px 40px 0px black;
+    }
+
+    .black_list{
+      background: url("https://images7.alphacoders.com/864/864060.jpg") no-repeat;
+      background-size: 100%;
+      height: 700px;
+
+    }
+
+    .images_black{
+      position: relative;
+      z-index: 1;
+    }
+
+    .images_black img{
+      height: 240px;
+    }
+
+    #black1{
+      position: absolute;
+      margin-left: 66.5%;
+      margin-top: -2%;
+      border-radius: 30px 30px 30px 30px;
+      box-shadow: 10px 20px 40px 10px #526f62;
+      transform: rotate(345deg);
+      width: 28.5%;
+
+
+    }
+
+    #black2{
+      position: absolute;
+      margin-left: 39%;
+      margin-top: 5.5%;
+      border-radius: 30px 30px 30px 30px;
+      box-shadow: 10px 20px 40px 15px #312f2f;
+      transform: rotate(345deg);
+      width: 25%;
+
+    }
+
+    #blackinfo{
+      position: absolute;
+      font-family: 'Jura', sans-serif;
+      text-shadow: 3px 3px 3px #050303;
+      color: #ac1616;
+      font-size: 35px;
+      margin-top: 38%;
+      margin-left: 56%;
+      transform: rotate(345deg);
+    }
+
+    .housecards{
+      background: url("http://i.imgur.com/Znb4cdu.png") no-repeat;
+      background-size: 100%;
+      height: 810px;
+    }
+
+    .house_images img{
+      width: 28.5%;
+    }
+
+    #house1{
+      position: absolute;
+      margin-left: 67%;
+      margin-top: 3%;
+      border-radius: 30px 30px 30px 30px;
+      box-shadow: 10px 20px 40px 15px #c1bfbf;
+      height: 240px;
+
+    }
+
+    #house2{
+      position: absolute;
+      margin-left: 67%;
+      margin-top: 24%;
+      border-radius: 30px 30px 30px 30px;
+      box-shadow: 10px 20px 40px 15px #d4d3d3;
+      height: 240px;
+
+    }
+
+    #house3{
+      position: absolute;
+      margin-left: 5%;
+      margin-top: 14%;
+      border-radius: 30px 30px 30px 30px;
+      box-shadow: 10px 20px 40px 15px #d9d9d9;
+      transform: rotate(355deg);
+      height: 260px;
+
+    }
+
+
+    .container_slide {
+      display: flex;
+      width: 100%;
+      padding: 4% 2%;
+      box-sizing: border-box;
+      height: 100vh;
+    }
+
+    .container_slide span{
+      font-family: 'Jura', sans-serif;
+      color: #dc3545;
+    }
+
+    .box {
+      flex: 1;
+      overflow: hidden;
+      transition: .5s;
+      margin: 0 2%;
+      box-shadow: 0 20px 30px rgba(0,0,0,.1);
+      line-height: 0;
+    }
+
+    .box > img {
+      width: 200%;
+      height: calc(100% - 10vh);
+      object-fit: cover;
+      transition: .5s;
+    }
+
+    .box > span {
+      font-size: 3.8vh;
+      display: block;
+      text-align: center;
+      height: 10vh;
+      line-height: 2.6;
+    }
+
+    .box:hover { flex: 1 1 50%; }
+    .box:hover > img {
+      width: 100%;
+      height: 100%;
+    }
+
+    @media screen and (max-width: 1000px){
+      .images_chernobyl img{
+        height: 210px;
+      }
+    }
+
+    @media screen and (max-width: 1000px){
+      .images_black img{
+        height: 210px;
+      }
+    }
+
+    @media screen and (max-width: 1000px){
+      #house1{
+        height: 180px;
+      }
+
+      #house2{
+        height: 180px;
+      }
+
+      #house3{
+        height: 180px;
+      }
+    }
+
+  </style>
+
+  <style>
+    @import url('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
+
+    #footer {
+      background: linear-gradient(45deg, yellowgreen, red) !important;
+    }
+
+    #footer a {
+      color: #ffffff;
+      text-decoration: none !important;
+      background-color: transparent;
+      -webkit-text-decoration-skip: objects;
+    }
+    #footer ul.social li{
+      padding: 3px 0;
+    }
+    #footer ul.social li a i {
+      margin-right: 5px;
+      font-size:25px;
+      -webkit-transition: .5s all ease;
+      -moz-transition: .5s all ease;
+      transition: .5s all ease;
+    }
+    #footer ul.social li:hover a i {
+      font-size:30px;
+      margin-top:-10px;
+    }
+  </style>
+
+</head>
+<body>
+
+<div class="mainpage">
+  <div class="header">
+    <nav class="navbar navbar-expand-lg navbar-light">
+      <div class="container-fluid">
+        <div class="popcorn">
+          <img th:src="@{https://cdn-icons-png.flaticon.com/512/2665/2665795.png}" th:href="@{/home}" height="64px" width="64px">
+        </div>
+        <a class="navbar-brand" th:href="@{/home}">Arena Film</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active home"  id="nav0" aria-current="page" th:href="@{/home}">ГОЛОВНА</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="nav1" th:href="@{/serials}">СЕРІАЛИ</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle " href="#" id="navbarDropdown" role="button"
+                 data-bs-toggle="dropdown" aria-expanded="false">
+                ФІЛЬМИ
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item" id="genre" href="#">За жанром</a></li>
+                <li>
+                  <hr class="dropdown-divider">
+                </li>
+                <li><a class="dropdown-item" href="#">Комедії</a></li>
+                <li><a class="dropdown-item" href="#">Трилери</a></li>
+                <li><a class="dropdown-item" href="#">Фентезі</a></li>
+                <li>
+                  <hr class="dropdown-divider">
+                </li>
+                <li><a class="dropdown-item" id="coutry" href="#">За країною</a></li>
+                <li>
+                  <hr class="dropdown-divider">
+                </li>
+                <li><a class="dropdown-item" href="#">Українські</a></li>
+                <li><a class="dropdown-item" href="#">Американські</a></li>
+                <li><a class="dropdown-item" href="#">Російські</a></li>
+              </ul>
+            </li>
+
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle " href="#" id="navbarDropdown2" role="button"
+                 data-bs-toggle="dropdown" aria-expanded="false">
+                ЗБІРКИ ФІЛЬМІВ
+              </a>
+              <ul class="dropdown-menu" id="menu1" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item" id="mag" href="#">Про магію</a></li>
+                <li>
+                  <hr class="dropdown-divider">
+                </li>
+                <li><a class="dropdown-item" id="space" href="#">Про космос</a></li>
+                <li>
+                  <hr class="dropdown-divider">
+                </li>
+                <li><a class="dropdown-item" id="future" href="#">Про майбутнє</a></li>
+                <li>
+                  <hr class="dropdown-divider">
+                </li>
+                <li><a class="dropdown-item" id="marvel" th:href="@{/marvel}">Marvel</a></li>
+              </ul>
+            </li>
+          </ul>
+          <form class="d-flex">
+            <a class="btn btn-outline-success" id="about_visitor" th:href="@{/visitor}" role="button">Підбірка</a>
+          </form>
+          <form class="d-flex">
+            <a class="btn btn-outline-success" id="about" th:href="@{/}" role="button">Про автора</a>
+          </form>
+        </div>
+      </div>
+    </nav>
+  </div>
+
+  <div class="content">
+    <div class="chernobyl">
+
+      <div id="chernobyl_head">
+        CHERNOBYL
+      </div>
+
+      <div id="hbo">
+        HBO (USA) 2019
+      </div>
+
+      <div class="images_chernobyl">
+        <img id="chern1" th:src="@{https://cdnimg.rg.ru/i/gallery/abbca2e9/7_bc085ffe.jpg}">
+        <img id="chern2" th:src="@{https://images.newscientist.com/wp-content/uploads/2019/05/03160545/chernobylpresspack6.jpg}">
+        <img id="chern3" th:src="@{https://avatars.mds.yandex.net/get-kinopoisk-post-img/1374145/c3cbfd365d87558ff1f24b094b12d984/960x540}">
+      </div>
+    </div>
+
+    <div class="black_list">
+
+      <div id="blackinfo">
+        USA 2013 (Психологічний трилер)
+      </div>
+
+      <div class="images_black">
+        <img id="black1" th:src="@{https://i1.wp.com/oquartonerd.com.br/wp-content/uploads/2021/01/og_image.jpg?fit=1200%2C630&ssl=1}">
+        <img id="black2" th:src="@{https://album.mediaset.es/eimg/2020/05/08/nSzsgugDcG2n3U5rZWXXm2.jpg?w=480}">
+      </div>
+    </div>
+
+    <div class="housecards">
+      <div class="house_images">
+        <img id="house1" th:src="@{https://i.insider.com/59f7677683bef03b008b4735?width=1000&format=jpeg&auto=webp}" >
+        <img id="house2" th:src="@{https://s2.r29static.com/bin/entry/dad/x,80/2059374/image.jpg}" >
+        <img id="house3" th:src="@{data:image/jpeg;base64,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}" >
+      </div>
+    </div>
+
+    <div class="container_slide">
+      <div class="box">
+        <img src="https://i1.wp.com/sova.ponominalu.ru/wp-content/uploads/2018/07/Vikingi.jpg?fit=1280%2C720&ssl=1">
+        <span>ВІКІНГИ</span>
+      </div>
+      <div class="box">
+        <img src="https://thumbs.dfs.ivi.ru/storage37/contents/3/8/7436dda8c4ad8c1e3fefab50a7f5e2.jpg">
+        <span>ПОЛДАРК</span>
+      </div>
+      <div class="box">
+        <img src="https://report.if.ua/wp-content/uploads/2019/01/lost.jpg">
+        <span>ЗАГУБЛЕНІ</span>
+      </div>
+      <div class="box">
+        <img src="https://m.buro247.ru/images/mo/1000x600-301219-01.png">
+        <span>ВІДЬМАК</span>
+      </div>
+    </div>
+
+
+
+  </div>
+
+  <div class="footer">
+    <section id="footer">
+      <div class="container">
+        <div class="row">
+          <div class="mt-2">
+            <ul class="list-unstyled list-inline social text-center">
+              <li class="list-inline-item"><a href=""><i class="fa fa-facebook"></i></a></li>
+              <li class="list-inline-item"><a href=""><i class="fa fa-twitter"></i></a></li>
+              <li class="list-inline-item"><a href=""><i class="fa fa-instagram"></i></a></li>
+              <li class="list-inline-item"><a href=""><i class="fa fa-google-plus"></i></a></li>
+              <li class="list-inline-item"><a href=""><i class="fa fa-envelope"></i></a></li>
+            </ul>
+          </div>
+          <hr>
+        </div>
+        <div class="row">
+          <div class="text-center text-white">
+            <p>Степан Бойко КН-211</p>
+            <p class="h6"></p>
+          </div>
+          <hr>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
+
+<script src="src/main/resources/templates/js/jquery.js"></script>
+<script src="src/main/resources/templates/js/bootstrap.js"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+
+
+</body>
+</html>

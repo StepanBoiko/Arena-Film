@@ -1,0 +1,90 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Itim&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fascinate&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Itim&family=Reggae+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Jura:wght@700&family=Reggae+One&display=swap');
+
+.header{
+    background: linear-gradient(45deg, coral, chartreuse);
+}
+
+.popcorn{
+    display: flex;
+    margin-left: 30px;
+}
+
+.home{
+    display: flex;
+    margin-left: 170px;
+}
+
+.container-fluid .navbar-brand{
+    font-family: 'Fascinate', cursive;
+    margin-left: 20px;
+    font-size: 35px;
+    color: greenyellow;
+    font-weight: bold;
+
+}
+
+.container-fluid .navbar-brand:hover{
+    color: cornflowerblue;
+}
+
+#genre{
+    color: #dc3545;
+    font-weight: bold;
+}
+#coutry{
+    color: #dc3545;
+    font-weight: bold;
+}
+
+#menu1{
+    font-family: 'Jura', sans-serif;
+    background: linear-gradient(45deg, coral, mediumpurple);
+}
+
+.dropdown-menu{
+    font-family: 'Jura', sans-serif;
+    background: linear-gradient(45deg, yellowgreen, lightskyblue);
+}
+#about{
+    font-family: 'Jura', sans-serif;
+    border-color: coral;
+    color: coral;
+    font-weight: bold;
+}
+
+
+#about:hover{
+    color: white;
+    background-color: coral;
+}
+
+.dropdown-item:hover{
+    background-color: aquamarine;
+}
+
+.container-fluid .nav-link{
+    font-size: 20px;
+    font-family: 'Jura', sans-serif;
+}
+
+#nav1{
+    color: #dc3545;
+}
+
+#nav0{
+    color: #dc3545;
+}
+
+#navbarDropdown{
+    color: #dc3545;
+}
+
+#navbarDropdown2{
+    color: #dc3545;
+}
+
+

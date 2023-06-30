@@ -1,0 +1,653 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <title>ArenaFilm</title>
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <style>
+
+    @import url('https://fonts.googleapis.com/css2?family=Itim&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Fascinate&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Itim&family=Reggae+One&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Jura:wght@700&family=Reggae+One&display=swap');
+
+    .header{
+      background: linear-gradient(45deg, coral, chartreuse);
+    }
+
+    .popcorn{
+      display: flex;
+      margin-left: 30px;
+    }
+
+    .home{
+      display: flex;
+      margin-left: 170px;
+    }
+
+    .container-fluid .navbar-brand{
+      font-family: 'Fascinate', cursive;
+      margin-left: 20px;
+      font-size: 35px;
+      color: greenyellow;
+      font-weight: bold;
+
+    }
+
+    .container-fluid .navbar-brand:hover{
+      color: cornflowerblue;
+    }
+
+    #genre{
+      color: #dc3545;
+      font-weight: bold;
+    }
+    #coutry{
+      color: #dc3545;
+      font-weight: bold;
+    }
+
+    #menu1{
+      font-family: 'Jura', sans-serif;
+      background: linear-gradient(45deg, coral, mediumpurple);
+    }
+
+    .dropdown-menu{
+      font-family: 'Jura', sans-serif;
+      background: linear-gradient(45deg, yellowgreen, lightskyblue);
+    }
+    #about{
+      font-family: 'Jura', sans-serif;
+      border-color: coral;
+      color: coral;
+      font-weight: bold;
+    }
+
+    #about_visitor{
+      font-family: 'Jura', sans-serif;
+      border-color: coral;
+      color: coral;
+      font-weight: bold;
+      margin-right: 5px;
+    }
+
+    #about_visitor:hover{
+      color: white;
+      background-color: coral;
+    }
+
+    #about:hover{
+      color: white;
+      background-color: coral;
+    }
+
+    .dropdown-item:hover{
+      background-color: aquamarine;
+    }
+
+    .container-fluid .nav-link{
+      font-size: 20px;
+      font-family: 'Jura', sans-serif;
+    }
+
+    #nav1{
+      color: #dc3545;
+    }
+
+    #nav0{
+      color: #dc3545;
+    }
+
+    #navbarDropdown{
+      color: #dc3545;
+    }
+
+    #navbarDropdown2{
+      color: #dc3545;
+    }
+  </style>
+
+  <style>
+    @import url('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
+
+    #footer {
+      background: linear-gradient(45deg, yellowgreen, red) !important;
+    }
+
+    #footer a {
+      color: #ffffff;
+      text-decoration: none !important;
+      background-color: transparent;
+      -webkit-text-decoration-skip: objects;
+    }
+    #footer ul.social li{
+      padding: 3px 0;
+    }
+    #footer ul.social li a i {
+      margin-right: 5px;
+      font-size:25px;
+      -webkit-transition: .5s all ease;
+      -moz-transition: .5s all ease;
+      transition: .5s all ease;
+    }
+    #footer ul.social li:hover a i {
+      font-size:30px;
+      margin-top:-10px;
+    }
+
+  </style>
+
+  <style>
+
+    @import url('https://fonts.googleapis.com/css2?family=Fascinate&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Reggae+One&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Itim&family=Reggae+One&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Jura:wght@700&family=Reggae+One&display=swap');
+
+
+    .mainpage{
+      background: linear-gradient(45deg, lightskyblue, lightgoldenrodyellow);
+    }
+    .addfilm{
+      width: 80%;
+      margin: auto;
+    }
+
+    .content{
+      width: 80%;
+      margin: auto;
+    }
+    #carouselExampleCaptions{
+      display: flex;
+      margin-top: -10px;
+    }
+
+    #imagetext1{
+      font-weight: bolder;
+      font-size: 50px;
+      color: goldenrod;
+    }
+    #imagetext2{
+      font-weight: bolder;
+      font-size: 50px;
+      color: goldenrod;
+    }
+    #imagetext3{
+      font-weight: bolder;
+      font-size: 50px;
+      color: goldenrod;
+    }
+
+    #caroudelheader{
+      font-family: 'Jura', sans-serif;
+      display: flex;
+      justify-content: center;
+      margin-top: -20px;
+      font-size: 45px;
+      font-weight: bolder;
+      color: lightcoral;
+      text-shadow: 3px 4px 7px black, 0 0 1em red;
+
+    }
+
+    .top5{
+      display: flex;
+      justify-content: center;
+    }
+
+    #text3d {
+      margin-top: 50px;
+      top: 30%;
+      right: 30%;
+      text-transform: uppercase;
+      font-family: verdana;
+      font-size: 4em;
+      font-weight: 700;
+      color: lightgreen;
+      text-shadow: 1px 1px 1px #919191,
+      1px 2px 1px #919191,
+      1px 3px 1px #919191,
+      1px 4px 1px #919191,
+      1px 5px 1px #919191,
+      1px 6px 1px #919191,
+      1px 7px 1px #919191,
+      1px 8px 1px #919191,
+      1px 9px 1px #919191,
+      1px 10px 1px #919191,
+      1px 18px 6px rgba(16,16,16,0.4),
+      1px 22px 10px rgba(16,16,16,0.2),
+      1px 25px 35px rgba(16,16,16,0.2),
+      1px 30px 60px rgba(16,16,16,0.4);
+    }
+
+    #tabs{
+      background: linear-gradient(45deg, lightgreen, lightskyblue);
+    }
+
+    .ui-widget-header{
+      background: none;
+      border: none;
+    }
+
+    .ui-tabs-tab {
+      border-radius: 30px;
+      background-color: lightsteelblue;
+    }
+
+
+    #tabs-1{
+      display: flex;
+
+    }
+    #tab1{
+      display: flex;
+      margin-left: 20px;
+
+    }
+    #headtab1{
+      display: flex;
+      justify-content: center;
+      font-weight: bolder;
+      color: goldenrod;
+    }
+
+    #tabs-2{
+      display: flex;
+    }
+    #tab2{
+      margin-left: 20px;
+    }
+    #headtab2{
+      display: flex;
+      justify-content: center;
+      font-weight: bolder;
+      color: goldenrod;
+    }
+
+    #tabs-3{
+      display: flex;
+    }
+    #tab3{
+      margin-left: 20px;
+    }
+    #headtab3{
+      display: flex;
+      justify-content: center;
+      font-weight: bolder;
+      color: goldenrod;
+    }
+
+    #tabs-4{
+      display: flex;
+    }
+    #tab4{
+      margin-left: 20px;
+    }
+    #headtab4{
+      display: flex;
+      justify-content: center;
+      font-weight: bolder;
+      color: goldenrod;
+    }
+
+    #tabs-5{
+      display: flex;
+    }
+    #tab5{
+      margin-left: 20px;
+    }
+    #headtab5{
+      display: flex;
+      justify-content: center;
+      font-weight: bolder;
+      color: goldenrod;
+    }
+
+    .trailer{
+      display: flex;
+      justify-content: space-between;
+    }
+
+    #frame1{
+      margin-top: 10px;
+    }
+    #frame2{
+      margin-top: 10px;
+    }
+    .headtrailers{
+      margin-top: 50px;
+      display: flex;
+      justify-content: center;
+      font-weight: bolder;
+      font-size: 45px;
+      font-family: 'Jura', sans-serif;
+      color: lightcoral;
+      text-shadow: 3px 4px 7px black, 0 0 1em red;
+    }
+    .headtrailers-addfilm{
+      margin-top: -15px;
+      display: flex;
+      justify-content: center;
+      font-weight: bolder;
+      font-size: 45px;
+      font-family: 'Jura', sans-serif;
+      color: lightcoral;
+      text-shadow: 3px 4px 7px black, 0 0 1em red;
+    }
+    .button-addfilm{
+      margin-top: 20px;
+    }
+
+    .maphead{
+      display: flex;
+      justify-content: center;
+      margin-top: 30px;
+      font-family: 'Jura', sans-serif;
+      font-weight: bolder;
+      font-size: 45px;
+      color: green;
+      text-shadow: 3px 4px 7px #5656d7, 0 0 1em yellow;
+    }
+
+    .mapa{
+      display: flex;
+      justify-content: center;
+    }
+
+    #map{
+      border: 20px lightgoldenrodyellow groove;
+      margin-bottom: 50px;
+
+    }
+
+    .logoutbutton{
+      display: flex;
+      justify-content: flex-end;
+      margin-top: 15px;
+    }
+    #inpSignout:hover{
+      color: white;
+      background-color: #cce3b8;
+    }
+
+
+  </style>
+</head>
+<body>
+  <div class="mainpage">
+    <div class="header">
+      <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container-fluid">
+          <div class="popcorn">
+            <img th:src="@{https://cdn-icons-png.flaticon.com/512/2665/2665795.png}" th:href="@{/home}" height="64px" width="64px">
+          </div>
+          <a class="navbar-brand" th:href="@{/home}">Arena Film</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                  data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                  aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active home"  id="nav0" aria-current="page" th:href="@{/home}">ГОЛОВНА</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" id="nav1" th:href="@{/serials}">СЕРІАЛИ</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle " href="#" id="navbarDropdown" role="button"
+                   data-bs-toggle="dropdown" aria-expanded="false">
+                  ФІЛЬМИ
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li><a class="dropdown-item" id="genre" href="#">За жанром</a></li>
+                  <li>
+                    <hr class="dropdown-divider">
+                  </li>
+                  <li><a class="dropdown-item" href="#">Комедії</a></li>
+                  <li><a class="dropdown-item" href="#">Трилери</a></li>
+                  <li><a class="dropdown-item" href="#">Фентезі</a></li>
+                  <li>
+                    <hr class="dropdown-divider">
+                  </li>
+                  <li><a class="dropdown-item" id="coutry" href="#">За країною</a></li>
+                  <li>
+                    <hr class="dropdown-divider">
+                  </li>
+                  <li><a class="dropdown-item" href="#">Українські</a></li>
+                  <li><a class="dropdown-item" href="#">Американські</a></li>
+                  <li><a class="dropdown-item" href="#">Російські</a></li>
+                </ul>
+              </li>
+
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle " href="#" id="navbarDropdown2" role="button"
+                   data-bs-toggle="dropdown" aria-expanded="false">
+                  ЗБІРКИ ФІЛЬМІВ
+                </a>
+                <ul class="dropdown-menu" id="menu1" aria-labelledby="navbarDropdown">
+                  <li><a class="dropdown-item" id="mag" href="#">Про магію</a></li>
+                  <li>
+                    <hr class="dropdown-divider">
+                  </li>
+                  <li><a class="dropdown-item" id="space" href="#">Про космос</a></li>
+                  <li>
+                    <hr class="dropdown-divider">
+                  </li>
+                  <li><a class="dropdown-item" id="future" href="#">Про майбутнє</a></li>
+                  <li>
+                    <hr class="dropdown-divider">
+                  </li>
+                  <li><a class="dropdown-item" id="marvel" th:href="@{/marvel}">Marvel</a></li>
+                </ul>
+              </li>
+            </ul>
+            <form class="d-flex">
+              <a class="btn btn-outline-success" id="about_visitor" th:href="@{/visitor}" role="button">Підбірка</a>
+            </form>
+            <form class="d-flex">
+              <a class="btn btn-outline-success" id="about" th:href="@{/}" role="button">Про автора</a>
+            </form>
+          </div>
+        </div>
+      </nav>
+    </div>
+
+    <div class="content">
+
+      <div class="logoutbutton">
+        <form th:action="@{/logout}" method="post">
+          <input type="hidden" name="_csrf" th:value="${_csrf.token}"/>
+          <input id="inpSignout" style="font-family: 'Jura', sans-serif;
+                        border-color: coral;
+                        color: coral;
+                        font-weight: bold;
+                        margin-right: 5px"
+                 type="submit" value="Sign Out"/>
+        </form>
+      </div>
+
+
+      <div id="caroudelheader">
+        <p>НАЙОЧІКУВАНІШІ ПРЕМ'ЄРИ 2021</p>
+      </div>
+
+      <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="https://media.dyvys.info/2021/04/AAAABcH5tSy1JOcHOGTlVjEHk19hcTTlGzEEntAto_ZEIzKtvv6GSaiiMjWA221ooe7cMZXxfv9AFg-VyQtf__VHpd4WXWxT.jpg" class="d-block w-100" alt="...">
+            <div class="carousel-caption d-none d-md-block" id="imagetext1">
+              <h5>ЗА МЕЖЕЮ</h5>
+              <p>2021</p>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <img src="https://nzl.theukrainians.org/wp-content/uploads/2021/01/dyu.jpg" class="d-block w-100" alt="...">
+            <div class="carousel-caption d-none d-md-block"id="imagetext2">
+              <h5>ДЮНА</h5>
+              <p>2021</p>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <img src="https://media.dyvys.info/2021/04/the-woman-in-the-window-netflix-min.jpg" class="d-block w-100" alt="...">
+            <div class="carousel-caption d-none d-md-block"id="imagetext3">
+              <h5>ЖІНКА У ВІКНІ</h5>
+              <p>2021</p>
+            </div>
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+
+      <div class="top5">
+        <p id="text3d">ТОП 5 НА СЬОГОДНІ</p>
+      </div>
+
+      <div id="tabs">
+        <ul>
+          <li><a href="#tabs-1">*1*</a></li>
+          <li><a href="#tabs-2">*2*</a></li>
+          <li><a href="#tabs-3">*3*</a></li>
+          <li><a href="#tabs-4">*4*</a></li>
+          <li><a href="#tabs-5">*5*</a></li>
+
+        </ul>
+        <div id="tabs-1">
+          <img th:src="@{https://kinoafisha.ua/upload/2019/06/films/8885/217n75umprincip.jpg}" width="280" height="400">
+          <div id="info1">
+            <div id="headtab1">2020, Бойовики, Трилери, Драми, Зарубіжні, Великобританія, Канада, США</div>
+            <div><p id="tab1">У центрі сюжету — головний герой, який живе у світі міжнародного шпигунства й розвідки. Він занурюється в потік захоплюючих подій і відвідує багато країн, відчуваючи на собі всі принади його роботи. Він постійно потрапляє в різні небезпечні ситуації разом із новоспеченими колегами.</p></div>
+          </div>
+        </div>
+        <div id="tabs-2">
+          <img th:src="@{https://s8.vcdn.biz/static/f/2066158511/image.jpg/pt/r300x423x4}" width="280" height="400">
+          <div id="info2">
+            <div id="headtab2">2020, Комедії, Бойовики, Трилери, Кримінал, Зарубіжні, Мексика, США</div>
+            <p id="tab2">Після сварки з напарником Бернетт стає приватним детективом. Водночас, Лоурі подумує нарешті перервати серйозні особисті стосунки. Героям доведеться забути про минуле і знову працювати разом, коли на них починає полювання найманець з Албанії, який вирішив помститися за смерть брата.</p>
+          </div>
+        </div>
+        <div id="tabs-3">
+          <img th:src="@{https://thumbs.dfs.ivi.ru/storage33/contents/f/a/b11e8e226e11710a6b6264879a65a9.jpg}" width="280" height="400">
+          <div id="info3">
+            <div id="headtab3">2020, Бойовики, Зарубіжні, США</div>
+            <p id="tab3">Вчені передбачили, що найближчими днями людство буде знищено метеоритом. Страх і паніка неминучі, однак у людей усе ж є надія на порятунок: бункер, укритий у сніговій Гренландії. Питання лише в тому, хто зуміє дістатися до призначеного місця вчасно.</p>
+          </div>
+        </div>
+        <div id="tabs-4">
+          <img th:src="@{https://api.vkino.com.ua/posters/a8/a82d02d86dd523ecb0ab1afd07dfef7c0da79823.jpg}" width="280" height="400">
+          <div id="info4">
+            <div id="headtab4">2019, Комедії, Бойовики, Пригоди, Зарубіжні, Фентезі, США</div>
+            <p id="tab4">Джуманджі — захоплююча гра, що притягує до себе любителів пригод. Однак, коли інші члени команди знову повернулися в гру, щоби врятувати одного зі своїх приятелів, вони з подивом дізнаються, що діючі правила змінилися. Тепер усе йде шкереберть, і для того щоби вижити, потрібно відправитися в незвідані куточки гри.</p>
+          </div>
+        </div>
+        <div id="tabs-5">
+          <img th:src="@{https://s1.vcdn.biz/static/f/1758195991/image.jpg}" width="280" height="400">
+          <div id="info5">
+            <div id="headtab5">2019, Комедії, Зарубіжні, США</div>
+            <p id="tab5">Дві висококласні шахрайки постійно змагаються й заважають своїми авантюрами одна одній. У підсумку вони б’ються об заклад: хто з них зможе за добу познайомитися із заможним чоловіком і обчистити його по повній — та й перемогла, а та, що програла, — залишить місто. Однак на шляху у відчайдушних шахрайок стає несподівана перешкода — спільне кохання до об’єкту їхнього спору.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="headtrailers">
+        <p>ТРЕЙЛЕРИ</p>
+      </div>
+
+      <div class="trailer">
+        <iframe id="frame1" width="560" height="315" src="https://www.youtube.com/embed/7orcAhYkrXk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <iframe id="frame2" width="560" height="315" src="https://www.youtube.com/embed/nevXeV0x7Tg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+
+      <div class="gmap">
+        <div class="maphead">
+          <p>НАШ КІНОТЕАТР МОЖНА ЗНАЙТИ ТУТ</p>
+        </div>
+        <div class="mapa">
+          <iframe id="map" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d1737.5875322703487!2d24.023704138727247!3d49.844200285497394!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x473add730c752709%3A0xc8c7f4cc48a1340c!2z0JzQsNCz0L3Rg9GB!5e1!3m2!1sru!2sua!4v1620585233525!5m2!1sru!2sua" width="600" height="450" frameborder="0" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+      </div>
+
+    </div>
+
+    <div>
+      <div class="headtrailers-addfilm">
+        <p>ДОДАТИ ФІЛЬМ</p>
+      </div>
+      <div class="addfilm">
+        <form method="post">
+          <p style="font-family: 'Jura', sans-serif; color: #b95a3a; font-size: 18px">Введіть назву<input type="text" name="name" placeholder="Введіть name" style="margin-left: 55px; background-color: #a0c77b"></p>
+          <p style="font-family: 'Jura', sans-serif; color: #b95a3a; font-size: 18px">Введіть рік<input type="text" name="year" placeholder="Введіть year" style="margin-left: 85px; background-color: #a0c77b"></p>
+          <p style="font-family: 'Jura', sans-serif; color: #b95a3a; font-size: 18px">Введіть жанр<input type="text" name="genre" placeholder="Введіть genre" style="margin-left: 64px; background-color: #a0c77b"></p>
+          <p style="font-family: 'Jura', sans-serif; color: #b95a3a; font-size: 18px">Введіть країну<input type="text" name="country" placeholder="Введіть country" style="margin-left: 51px; background-color: #a0c77b"></p>
+          <p style="font-family: 'Jura', sans-serif; color: #b95a3a; font-size: 18px">Введіть компанію<input type="text" name="company" placeholder="Введіть company" style="margin-left: 27px; background-color: #a0c77b"></p>
+          <p style="font-family: 'Jura', sans-serif; color: #b95a3a; font-size: 18px">Введіть рейтинг<input type="text" name="rating" placeholder="Введіть rating" style="margin-left: 37px; background-color: #a0c77b"></p>
+          <p style="font-family: 'Jura', sans-serif; color: #b95a3a; font-size: 18px">Введіть тривалість<input type="text" name="duration" placeholder="Введіть duration" style="margin-left: 15px; background-color: #a0c77b"></p>
+          <p style="font-family: 'Jura', sans-serif; color: #b95a3a; font-size: 18px">Введіть вікове обмеження<input type="text" name="ageLimit" placeholder="Введіть ageLimit" style="margin-left: 5px; background-color: #a0c77b"></p>
+<!--          <p><input type="file" name="image" accept="image/png, image/jpeg" /></p>-->
+          <div class="button-addfilm">
+            <input type="hidden" name="_csrf" th:value="${_csrf.token}"/>
+            <button type="submit" style="font-family: 'Jura', sans-serif; color: #b95a3a; font-size: 18px; width: 120px; height: 50px; background-color: #a0c77b">Додати</button>
+            <p></p>
+          </div>
+        </form>
+      </div>
+
+      <div>
+
+      </div>
+
+    <div class="footer">
+      <section id="footer">
+        <div class="container">
+          <div class="row">
+            <div class="mt-2">
+              <ul class="list-unstyled list-inline social text-center">
+                <li class="list-inline-item"><a href=""><i class="fa fa-facebook"></i></a></li>
+                <li class="list-inline-item"><a href=""><i class="fa fa-twitter"></i></a></li>
+                <li class="list-inline-item"><a href=""><i class="fa fa-instagram"></i></a></li>
+                <li class="list-inline-item"><a href=""><i class="fa fa-google-plus"></i></a></li>
+                <li class="list-inline-item"><a href=""><i class="fa fa-envelope"></i></a></li>
+              </ul>
+            </div>
+            <hr>
+          </div>
+          <div class="row">
+            <div class="text-center text-white">
+              <p>Степан Бойко КН-211</p>
+              <p class="h6"></p>
+            </div>
+            <hr>
+          </div>
+        </div>
+      </section>
+    </div>
+    </div>
+
+  </div>
+
+
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+    <script>
+      $( function() {
+        $( "#tabs" ).tabs();
+      } );
+    </script>
+  </body>
+</html>
